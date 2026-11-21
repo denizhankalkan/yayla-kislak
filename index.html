@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yayla &amp; Kışlak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, premium organic grocer; editorial and photography-led like Biona / Odylique / Horanta
+   IDEA: a cooperative shop window: large photographs, white space, a hand-written signature line
+   PICTURE: full-width hero photograph with a floating card; story collage of rectangle + oval photo
+   COLOUR and TYPE: white and warm stone, deep olive, a little terracotta; Jost + Great Vibes script accents
+   LAYOUT: centred 1240px shop grid, thin rules, category tiles, product carousel, sticky slim header */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#141613);--stone:light-dark(#f6f2ec,#1c1f1a);--ink:light-dark(#1f231c,#ecebe4);--mute:light-dark(#6d6f66,#a6a89d);
+--ol:light-dark(#2f4a2c,#7fa36f);--ol-d:#24391f;--terra:#b5552d;--line:light-dark(#e6e1d8,#2c3029);--card:light-dark(#fff,#191c17)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Jost,"Helvetica Neue",Arial,sans-serif;font-weight:400;overflow-x:clip}
+h1,h2,h3{font-weight:500;line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,4.6vw,52px)}h2{font-size:clamp(28px,3.2vw,38px)}h3{font-size:18px;font-weight:500}
+.script{font-family:"Great Vibes",cursive;font-weight:400;font-size:clamp(44px,5.4vw,68px);line-height:1.05;color:var(--ink)}
+p{margin:0}a{color:inherit}html{scroll-padding-top:90px;scroll-behavior:smooth}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}.band{padding:clamp(48px,6vw,96px) 0}
+.ann{background:var(--ol-d);color:#f1efe6;font-size:14px;text-align:center;padding:9px 16px}
+header{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.hd{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px;height:78px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo b{font-weight:600;font-size:22px;letter-spacing:.02em}.logo small{display:block;font-size:12px;color:var(--mute);margin-top:-3px}
+nav{display:flex;justify-content:center;gap:30px;font-weight:500;font-size:16px}nav a{text-decoration:none;padding:8px 0;border-bottom:1.5px solid transparent}nav a:hover{border-color:var(--ol)}
+.tools{display:flex;align-items:center;gap:6px}
+.ib{border:0;background:none;color:inherit;width:44px;height:44px;display:grid;place-items:center;cursor:pointer;border-radius:50%;position:relative}.ib:hover{background:var(--stone)}
+.ib svg,.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ib em{position:absolute;top:4px;right:2px;background:var(--ol);color:#fff;font:600 11px Jost;font-style:normal;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center}
+.lang{display:flex;background:var(--stone);border-radius:999px;padding:3px;margin-inline-start:6px}
+.lang button{border:0;background:none;color:inherit;font:500 14px Jost;min-width:40px;height:36px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--ol);color:#fff}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 28px;border-radius:6px;font:500 15px Jost;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1.5px solid var(--ol);background:var(--ol);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}.btn.light{background:#fff;color:var(--ol-d);border-color:#fff}
+/* photo slot */
+.ph{position:relative;overflow:hidden;background:var(--t,#e9e3d8) center/cover no-repeat;display:grid;place-items:center;color:rgba(40,40,30,.55);margin:0}
+.ph>svg{width:min(26%,72px);height:auto;fill:none;stroke:currentColor;stroke-width:1.1;opacity:.7}
+.ph figcaption{position:absolute;left:14px;bottom:12px;font-size:13px;color:rgba(30,30,25,.7)}
+.ph.has>svg,.ph.has figcaption{display:none}
+.ph .up{position:absolute;right:10px;top:10px;background:rgba(255,255,255,.92);color:#1f231c;font-size:13px;font-weight:500;padding:6px 12px;border-radius:999px;cursor:pointer;opacity:0;transition:opacity .2s}
+.ph:hover .up,.ph:focus-within .up{opacity:1}.ph .up input{position:absolute;width:1px;height:1px;opacity:0}
+@media(hover:none){.ph .up{opacity:1}}
+/* hero */
+.hero{position:relative}.slides{position:relative;height:clamp(420px,62vh,640px)}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s}.slide.on{opacity:1;z-index:1}.slide .ph{position:absolute;inset:0}
+.hcard{position:absolute;z-index:2;left:max(4vw,16px);bottom:clamp(24px,6vw,64px);background:var(--bg);padding:clamp(24px,3vw,40px);max-width:500px;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.hcard p{color:var(--mute);margin:12px 0 22px}
+.dots{position:absolute;z-index:3;right:max(4vw,16px);bottom:28px;display:flex;gap:4px}
+.dots button{width:30px;height:30px;border:0;background:none;cursor:pointer;display:grid;place-items:center}.dots button::after{content:"";width:10px;height:10px;border-radius:50%;border:1.5px solid #fff;background:transparent}.dots button[aria-current=true]::after{background:#fff}
+.strip{background:var(--ol);color:#f4f2e8;overflow:hidden;white-space:nowrap}
+.strip div{display:inline-flex;gap:48px;padding:14px 0;animation:mq 40s linear infinite}.strip span{display:inline-flex;align-items:center;gap:10px;font-size:15px}.strip .ic{width:18px;height:18px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:32px;flex-wrap:wrap}.sh p{color:var(--mute);margin-top:8px;max-width:38em}
+.kick{font-size:14px;font-weight:500;color:var(--ol);margin-bottom:10px}
+.cats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.cat{background:none;border:0;padding:0;color:inherit;font:inherit;cursor:pointer;text-align:center}
+.cat .ph{aspect-ratio:1;border-radius:14px;margin-bottom:12px;outline:2px solid transparent;outline-offset:3px;transition:outline-color .2s}
+.cat[aria-pressed=true] .ph{outline-color:var(--ol)}.cat b{display:block;font-weight:500}.cat small{color:var(--mute)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;border:1px solid var(--line);border-radius:8px;padding:10px 16px;margin:36px 0 22px;font-size:15px;color:var(--mute);flex-wrap:wrap}
+.bar select{font:16px Jost;padding:8px 12px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 22px}
+.card{display:flex;flex-direction:column;text-align:center}
+.card .ph{aspect-ratio:1;border-radius:6px;--t:var(--stone)}
+.badge{position:absolute;left:12px;top:12px;background:var(--terra);color:#fff;font-size:12px;font-weight:500;padding:4px 10px;border-radius:999px;z-index:1}.badge.n{background:var(--ol)}
+.card h3{margin:16px 0 4px}.card .o{font-size:14px;color:var(--mute)}
+.price{margin:6px 0 14px;font-weight:500}.price s{color:var(--mute);font-weight:400;margin-inline-end:8px}.price small{color:var(--mute);font-weight:400}
+.card .btn{margin-top:auto;min-height:44px;padding:0 16px;font-size:14px}
+.note{font-size:14px;color:var(--mute);margin-top:22px}
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
+.story p{font-size:18px;line-height:1.85;margin:24px 0 32px}
+.coll{position:relative;aspect-ratio:1/1;max-width:600px;justify-self:end;width:100%}
+.coll .a{position:absolute;left:0;top:4%;width:66%;aspect-ratio:4/3}
+.coll .b{position:absolute;right:0;bottom:0;width:48%;aspect-ratio:3/4.4;border-radius:999px;border:8px solid var(--bg)}
+.split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);background:var(--stone)}
+.split .ph{min-height:460px}.split .tx{padding:clamp(32px,5vw,72px);align-self:center;max-width:560px}
+.split ul{list-style:none;padding:0;margin:20px 0 28px;display:grid;gap:10px}.split li{display:flex;gap:12px;align-items:baseline}
+.split li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--ol);transform:translateY(-3px)}
+.split.rev{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);background:var(--bg)}.split.rev .ph{order:2}
+.big{font-size:26px;font-weight:500;margin-bottom:6px}
+.farm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.farm .ph{aspect-ratio:4/5;border-radius:6px}.farm h3{margin-top:16px}.farm .o{color:var(--mute);font-size:15px}.farm p{font-size:16px;margin-top:8px}
+.diff{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.dg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;text-align:center}
+.dg .ic{width:44px;height:44px;stroke:var(--ol);stroke-width:1.2;margin-bottom:14px}.dg p{color:var(--mute);font-size:15px;margin-top:6px}
+.fair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:center}
+.fair p{color:var(--mute);margin-top:16px}
+.rows{display:grid;gap:16px}.row{display:grid;grid-template-columns:10em minmax(0,1fr) 4em;gap:14px;align-items:center;font-size:15px}
+.row i{display:block;height:10px;border-radius:5px;background:var(--line);overflow:hidden}.row i b{display:block;height:100%;background:var(--ol)}.row span:last-child{text-align:right;font-weight:500;white-space:nowrap}
+.coops{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.coops span{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:15px}
+.news{background:var(--stone);text-align:center}.news p{color:var(--mute);margin-top:10px}
+.news form{display:flex;gap:10px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.news input{font:16px Jost;min-height:48px;padding:0 18px;border:1px solid var(--line);border-radius:6px;width:min(380px,100%);background:var(--bg);color:var(--ink)}
+footer{background:#1b2219;color:#d9d8cf;font-size:15px}
+.fc{display:grid;grid-template-columns:1.5fr repeat(3,minmax(0,1fr));gap:32px;padding:64px 0 40px}
+footer h3{color:#fff;font-size:16px;margin-bottom:14px}footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}footer a{text-decoration:none;color:#c9c8bd}footer a:hover{color:#fff}
+.fb{border-top:1px solid #333b30;padding:18px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#9a9a90;font-size:14px}
+.drawer{position:fixed;inset:0 0 0 auto;width:min(440px,100%);background:var(--bg);z-index:60;transform:translateX(100%);transition:transform .35s;display:flex;flex-direction:column}
+.drawer.on{transform:none;box-shadow:-30px 0 60px rgba(0,0,0,.2)}.shade{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:50;display:none}.shade.on{display:block}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
+.dl{flex:1;overflow:auto;padding:4px 22px}.li{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.li .ph{aspect-ratio:1;border-radius:4px;--t:var(--stone)}.li .ph>svg{width:50%}.li small{color:var(--mute);display:block}
+.qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:6px}.qty button{border:0;background:none;color:inherit;width:36px;height:40px;font-size:18px;cursor:pointer}.qty span{min-width:20px;text-align:center}
+.df{padding:20px 22px;border-top:1px solid var(--line);display:grid;gap:12px}
+.prog{height:4px;background:var(--line);border-radius:2px}.prog i{display:block;height:100%;background:var(--ol);border-radius:2px;transition:width .3s}
+.tot{display:flex;justify-content:space-between;font-size:20px;font-weight:500}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,140%);background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:6px;z-index:70;transition:transform .3s,visibility .3s;visibility:hidden;max-width:92vw;text-align:center;font-size:15px}.toast.on{transform:translate(-50%,0);visibility:visible}
+@media(max-width:1000px){nav{display:none}.hd{grid-template-columns:auto minmax(0,1fr)}.tools{justify-self:end}.cats{grid-template-columns:repeat(3,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dg{grid-template-columns:repeat(2,minmax(0,1fr))}.fc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.story,.split,.split.rev,.fair{grid-template-columns:minmax(0,1fr)}.split.rev .ph{order:0}.split .ph{min-height:300px}.farm{grid-template-columns:minmax(0,1fr)}.farm .ph{aspect-ratio:4/3}.coll{justify-self:center}}
+@media(max-width:600px){.logo small{display:none}.logo b{font-size:17px}.logo svg{width:30px;height:30px}.lang button{min-width:34px}.hcard{position:relative;left:auto;bottom:auto;margin:-60px 16px 0;max-width:none}.slides{height:360px}.dots{bottom:auto;top:310px}.grid{gap:22px 14px}.card h3{font-size:16px}.row{grid-template-columns:7.5em minmax(0,1fr) 3.5em}.dg{grid-template-columns:minmax(0,1fr)}.fc{grid-template-columns:minmax(0,1fr)}.ib.hide{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-jar" viewBox="0 0 48 48"><path d="M15 10h18v5H15zM14 15h20a2 2 0 0 1 2 2v23a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3V17a2 2 0 0 1 2-2zM17 24h14v9H17z"/></symbol>
+<symbol id="i-sack" viewBox="0 0 48 48"><path d="M17 12c3-3 11-3 14 0M17 12l-2 5c-6 6-7 16-4 24h26c3-8 2-18-4-24l-2-5M18 17h12"/></symbol>
+<symbol id="i-bread" viewBox="0 0 48 48"><path d="M6 32c0-9 8-15 18-15s18 6 18 15c0 3-2 5-5 5H11c-3 0-5-2-5-5zM16 25l3-3M23 24l3-3M30 25l3-3"/></symbol>
+<symbol id="i-apple" viewBox="0 0 48 48"><path d="M24 15c-6-4-15-1-15 10s7 18 11 18c2 0 3-1 4-1s2 1 4 1c4 0 11-7 11-18s-9-14-15-10zM24 15c0-4 2-7 5-8M27 10c3-2 7-1 8 1-3 2-6 2-8-1"/></symbol>
+<symbol id="i-nut" viewBox="0 0 48 48"><path d="M24 7c9 0 15 7 15 17s-6 17-15 17S9 34 9 24 15 7 24 7zM24 7v34M17 14c-3 6-3 14 0 20M31 14c3 6 3 14 0 20"/></symbol>
+<symbol id="i-soap" viewBox="0 0 48 48"><path d="M8 20l16-6 16 6v12l-16 6-16-6zM8 20l16 6 16-6M24 26v12M30 8a2 2 0 1 0 0 .1M36 12a1.5 1.5 0 1 0 0 .1"/></symbol>
+<symbol id="i-box" viewBox="0 0 48 48"><path d="M7 16l17-8 17 8v18l-17 8-17-8zM7 16l17 8 17-8M24 24v18M15 12l17 8"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 48 48"><path d="M10 38C10 20 22 9 40 8c0 18-11 30-29 30zM10 38l16-16"/></symbol>
+<symbol id="i-hands" viewBox="0 0 48 48"><path d="M6 26l8-8 6 2 6-2 6 3 10 5M6 26l10 10c2 2 4 2 6 0l10-9M20 20l-4 6c-1 2 1 4 3 3l5-3"/></symbol>
+<symbol id="i-truck" viewBox="0 0 48 48"><path d="M4 12h24v20H4zM28 19h8l6 7v6H28M13 36a3 3 0 1 0 0 .1M35 36a3 3 0 1 0 0 .1"/></symbol>
+<symbol id="i-home" viewBox="0 0 48 48"><path d="M7 22L24 9l17 13M11 19v21h26V19M20 40V29h8v11"/></symbol>
+<symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 6l15 6v10c0 10-6 17-15 20C15 39 9 32 9 22V12zM17 24l5 5 9-10"/></symbol>
+<symbol id="i-mtn" viewBox="0 0 48 48"><path d="M4 38l13-20 8 11 6-8 13 17zM17 18l3 5-3-1-3 2"/></symbol>
+<symbol id="i-user" viewBox="0 0 48 48"><path d="M24 24a8 8 0 1 0 0-.1M10 42c1-8 7-12 14-12s13 4 14 12"/></symbol>
+</defs></svg>
+
+<div class="ann" data-i="ann">1.000 ₺ ve üzeri siparişlerde ücretsiz kargo · Kooperatiften doğrudan kapınıza</div>
+<header><div class="wrap hd">
+  <a class="logo" href="#"><svg width="38" height="38" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--ol)"><circle cx="24" cy="24" r="22"/><path d="M9 27l9-12 6 7 4-5 11 10M9 33h30"/></svg><span><b>YAYLA &amp; KIŞLAK</b><small data-i="tag">Toros’tan sofraya</small></span></a>
+  <nav><a href="#urunler" data-i="n1">Ürünlerimiz</a><a href="#kislik" data-i="n2">Kışlık Paket</a><a href="#hikaye" data-i="n3">Hakkımızda</a><a href="#ciftciler" data-i="n4">Üreticilerimiz</a><a href="#iletisim" data-i="n5">İletişim</a></nav>
+  <div class="tools">
+    <a class="ib hide" href="#urunler" aria-label="Ara"><svg><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg></a>
+    <button class="ib hide" aria-label="Hesap" id="acc"><svg><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.5-7 8-7s7 2.5 8 7"/></svg></button>
+    <button class="ib" id="openCart" aria-label="Sepet"><svg><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg><em id="cnt">0</em></button>
+    <div class="lang" role="group" aria-label="Dil"><button id="lTR" aria-pressed="true">TR</button><button id="lEN" aria-pressed="false">EN</button></div>
+  </div>
+</div></header>
+
+<section class="hero">
+  <div class="slides" id="slides"></div>
+  <div class="hcard"><div class="kick" id="hk"></div><h1 id="ht"></h1><p id="hp"></p><a class="btn" href="#urunler" id="hb"></a></div>
+  <div class="dots" id="dots"></div>
+</section>
+<div class="strip" aria-hidden="true"><div id="strip"></div></div>
+
+<section class="band" id="urunler"><div class="wrap">
+  <div class="sh"><div><div class="kick" data-i="cK">Kategoriler</div><h2 data-i="cT">Mevsiminde, katkısız, el emeği</h2></div></div>
+  <div class="cats" id="cats"></div>
+  <div class="bar"><span id="count"></span><select id="sort" aria-label="Sıralama"><option value="d" data-i="o1">Varsayılan sıralama</option><option value="a" data-i="o2">Fiyat: düşükten yükseğe</option><option value="z" data-i="o3">Fiyat: yüksekten düşüğe</option></select></div>
+  <div class="grid" id="grid"></div>
+  <p class="note" data-i="sample">Fiyatlar ve gramajlar örnektir. Görsellerin üzerine gelip “Fotoğraf ekle” ile kendi ürün fotoğraflarınızı deneyebilirsiniz.</p>
+</div></section>
+
+<section class="band" id="hikaye" style="background:var(--stone)"><div class="wrap story">
+  <div><div class="script" data-i="sT">Yayladan kışlaktan sofranıza</div>
+  <p data-i="sP">Yörükler yazı Niğde’nin yaylalarında, kışı Çukurova’nın kışlaklarında geçirirdi. Biz de o yolun üzerinde, bir yörük ailesinin sofrasından doğduk. Çukurbağ’ın elmasını ve cevizini, Niğde’nin tarhanasını, Çukurova’nın salçasını, Hatay’ın sabununu ve Antep’in lezzetlerini kooperatiflerden ve küçük çiftçiden aracısız alıp size ulaştırıyoruz. Amacımız organik gıdayı herkes için ulaşılabilir kılmak ve emeğin karşılığını üreticiye vermek.</p>
+  <a class="btn ghost" href="#ciftciler" data-i="sB">Üreticilerimizi tanıyın</a></div>
+  <div class="coll"><figure class="ph a" data-k="st1" style="--t:#d9d2c3"><svg><use href="#i-user"/></svg><figcaption data-i="c1">Aile / ekip fotoğrafı</figcaption></figure>
+  <figure class="ph b" data-k="st2" style="--t:#cfc6b2"><svg><use href="#i-mtn"/></svg><figcaption data-i="c2">Yayla fotoğrafı</figcaption></figure></div>
+</div></section>
+
+<section class="split" id="kislik">
+  <figure class="ph" data-k="kis" style="--t:#ddd3c1"><svg><use href="#i-box"/></svg><figcaption data-i="c3">Kışlık paket fotoğrafı</figcaption></figure>
+  <div class="tx"><div class="kick" data-i="kK">Sınırlı sayıda</div><h2 data-i="kT">Kışlık Paket</h2>
+  <p style="margin-top:14px;color:var(--mute)" data-i="kP">Bir ailenin kışını karşılayacak yörük kileri, tek kutuda. Kasım–Şubat arası her ay gönderim.</p>
+  <ul><li data-i="k1">2 kg Yörük tarhanası</li><li data-i="k2">2 kg domates, 1 kg biber salçası</li><li data-i="k3">1 kg Çamardı cevizi</li><li data-i="k4">2 kavanoz kahvaltılık sos</li><li data-i="k5">2 adet Hatay defne sabunu</li></ul>
+  <div class="big">2.490 ₺</div><button class="btn" data-add="kis" data-i="kB">Sepete ekle</button></div>
+</section>
+
+<section class="split rev" id="sabun">
+  <figure class="ph" data-k="sab" style="--t:#e4dccb"><svg><use href="#i-soap"/></svg><figcaption data-i="c4">Krem kılıflı sabun fotoğrafı</figcaption></figure>
+  <div class="tx"><div class="kick" data-i="bK">Hatay’dan</div><h2 data-i="bT">Kazanda kaynamış, krem kılıfında</h2>
+  <p style="margin-top:14px;color:var(--mute)" data-i="bP">Antakyalı ustaların geleneksel yöntemle kaynattığı defne ve zeytinyağı sabunları. Her sabun, hediye paketi ve sabunluk olarak da kullanılabilen krem rengi pamuklu bir kılıfla gönderilir.</p>
+  <ul><li data-i="b1">Defne yağlı, zeytinyağlı ve keçi sütlü çeşitler</li><li data-i="b2">Palm yağı, parfüm ve koruyucu içermez</li><li data-i="b3">Hatay’daki kadın üreticilerle birlikte</li></ul>
+  <button class="btn ghost" data-f="sabun" data-i="bB">Sabunları incele</button></div>
+</section>
+
+<section class="band" id="ciftciler"><div class="wrap">
+  <div class="sh"><div><div class="kick" data-i="fK">Üreticilerimiz</div><h2 data-i="fT">Ürünü kimin yetiştirdiğini bilin</h2><p data-i="fP">Her ürünün arkasında bir bahçe, bir aile ya da bir kooperatif var. Onları sizinle tanıştırıyoruz.</p></div></div>
+  <div class="farm" id="farm"></div>
+  <p class="note" data-i="fN">Örnek içerik: üretici isimleri ve fotoğrafları, üreticilerin izniyle eklenecektir.</p>
+</div></section>
+
+<section class="band diff"><div class="wrap">
+  <h2 style="text-align:center;margin-bottom:44px" data-i="dT">Bizi farklı kılan</h2>
+  <div class="dg">
+  <div><svg class="ic"><use href="#i-leaf"/></svg><h3 data-i="d1">Katkısız ve doğal</h3><p data-i="d1p">Koruyucu, renklendirici ve kimyasal gübre yok.</p></div>
+  <div><svg class="ic"><use href="#i-home"/></svg><h3 data-i="d2">Kooperatif güvencesi</h3><p data-i="d2p">Kayıtlı kooperatifler ve tanıdığımız üreticiler.</p></div>
+  <div><svg class="ic"><use href="#i-hands"/></svg><h3 data-i="d3">Adil fiyat</h3><p data-i="d3p">Aracı yok; kazancın büyük kısmı üreticiye gider.</p></div>
+  <div><svg class="ic"><use href="#i-truck"/></svg><h3 data-i="d4">Plastiksiz gönderim</h3><p data-i="d4p">Anlaşmalı kargoyla 2–4 iş gününde kapınızda.</p></div>
+  </div></div></section>
+
+<section class="band"><div class="wrap fair">
+  <div><div class="kick" data-i="aK">Şeffaf fiyat</div><h2 data-i="aT">Mazot belli, emek belli. Fiyat adil olmalı.</h2>
+  <p data-i="aP">Mazot, gübre ve nakliye maliyeti arttıkça en çok üretici zorlanıyor. Ürünü doğrudan üreticiden alıyor, ödediğiniz her 100 ₺’nin nereye gittiğini açıkça gösteriyoruz.</p>
+  <div class="coops" id="coops"></div></div>
+  <div><div class="rows" id="rows"></div><p class="note" data-i="aN">Oranlar örnektir; gerçek maliyetlerle güncellenecektir.</p></div>
+</div></section>
+
+<section class="band news" id="iletisim"><div class="wrap">
+  <h2 data-i="nT">Yeni hasattan ilk siz haberdar olun</h2><p data-i="nP">Mevsimlik ürünler, kışlık paket dönemi ve kooperatif hikâyeleri ayda bir e-postanızda.</p>
+  <form id="nf"><input type="email" id="em" required aria-label="E-posta"><button class="btn" data-i="nB">Abone ol</button></form>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fc">
+  <div><div class="logo" style="color:#fff"><b>YAYLA &amp; KIŞLAK</b></div><p style="margin-top:12px;max-width:30em" data-i="fA">Niğde, Çukurova, Hatay ve Antep’in kooperatiflerinden ve küçük üreticilerinden organik, katkısız gıda ve doğal sabun.</p></div>
+  <div><h3 data-i="f1">Alışveriş</h3><ul><li><a href="#urunler" data-i="n1">Ürünlerimiz</a></li><li><a href="#kislik" data-i="n2">Kışlık Paket</a></li><li><a href="#sabun" data-i="fs">Hatay Sabunları</a></li></ul></div>
+  <div><h3 data-i="f2">Kurumsal</h3><ul><li><a href="#hikaye" data-i="n3">Hakkımızda</a></li><li><a href="#ciftciler" data-i="n4">Üreticilerimiz</a></li><li><a href="#iletisim" data-i="n5">İletişim</a></li></ul></div>
+  <div><h3 data-i="f3">Yardım</h3><ul><li data-i="h1">Kargo ve teslimat</li><li data-i="h2">İade ve değişim</li><li data-i="h3">Mesafeli satış sözleşmesi</li><li data-i="h4">KVKK aydınlatma metni</li></ul></div>
+  </div>
+  <div class="fb"><span>© 2026 Yayla &amp; Kışlak</span><span data-i="pay">Güvenli ödeme · Kredi kartı ve havale</span></div>
+</div></footer>
+
+<div class="shade" id="shade"></div>
+<aside class="drawer" id="drawer" aria-label="Sepet"><div class="dh"><h3 data-i="cart">Sepetiniz</h3><button class="ib" id="closeCart" aria-label="Kapat"><svg><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+<div class="dl" id="lines"></div>
+<div class="df"><div id="ship" style="font-size:15px"></div><div class="prog"><i id="prog"></i></div><div class="tot"><span data-i="total">Ara toplam</span><span id="tot">0 ₺</span></div><button class="btn" id="checkout" data-i="co">Ödemeye geç</button></div></aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>{
+const EN={ann:"Free delivery on orders over 1,000 ₺ · Straight from cooperatives to your door",tag:"From the Taurus to your table",n1:"Shop",n2:"Winter Box",n3:"About",n4:"Our Growers",n5:"Contact",cK:"Categories",cT:"Seasonal, additive-free, handmade",o1:"Default sorting",o2:"Price: low to high",o3:"Price: high to low",sample:"Prices and weights are samples. Hover over any image and use “Add photo” to try your own product photos.",sT:"From the highlands to your table",sP:"Yörüks spent summers in the highland pastures (yayla) of Niğde and winters in the lowland camps (kışlak) of Çukurova. We were born at the table of a Yörük family on that very route. Apples and walnuts from Çukurbağ, tarhana from Niğde, paste from Çukurova, soap from Hatay and flavours from Antep: we buy them directly from cooperatives and small farmers and bring them to you. Our aim is to make organic food accessible and give growers a fair return for their work.",sB:"Meet our growers",c1:"Family / team photo",c2:"Highland photo",c3:"Winter box photo",c4:"Soap in cream sleeve photo",kK:"Limited availability",kT:"Winter Box",kP:"A Yörük pantry for a family’s whole winter, in one box. Shipped monthly from November to February.",k1:"2 kg Yörük tarhana",k2:"2 kg tomato paste, 1 kg pepper paste",k3:"1 kg Çamardı walnuts",k4:"2 jars of breakfast spread",k5:"2 Hatay laurel soaps",kB:"Add to cart",bK:"From Hatay",bT:"Cauldron-made, in a cream sleeve",bP:"Laurel and olive-oil soaps made the traditional way by Antakya soap makers. Each one ships in a cream cotton sleeve that doubles as gift wrap and soap pouch.",b1:"Laurel, olive oil and goat’s milk varieties",b2:"No palm oil, perfume or preservatives",b3:"Made with women producers in Hatay",bB:"Explore the soaps",fK:"Our growers",fT:"Know who grew it",fP:"Behind every product is an orchard, a family or a cooperative. We introduce them to you.",fN:"Sample content: grower names and photos will be added with their permission.",dT:"What makes us different",d1:"Pure and natural",d1p:"No preservatives, colourings or chemical fertiliser.",d2:"Cooperative assurance",d2p:"Registered cooperatives and growers we know.",d3:"Fair price",d3p:"No middlemen; most of the margin goes to the grower.",d4:"Plastic-free shipping",d4p:"At your door in 2–4 working days.",aK:"Transparent pricing",aT:"Fuel costs are real, so is labour. Prices should be fair.",aP:"As diesel, fertiliser and transport costs rise, growers are hit hardest. We buy directly and show openly where every 100 ₺ you spend goes.",aN:"Shares are samples, to be updated with real costs.",nT:"Hear about the new harvest first",nP:"Seasonal products, the winter box window and cooperative stories, once a month.",nB:"Subscribe",fA:"Organic, additive-free food and natural soap from cooperatives and small growers in Niğde, Çukurova, Hatay and Antep.",f1:"Shop",f2:"Company",f3:"Help",fs:"Hatay Soaps",h1:"Shipping and delivery",h2:"Returns and exchanges",h3:"Distance sales agreement",h4:"Privacy notice",pay:"Secure payment · Card and bank transfer",cart:"Your cart",total:"Subtotal",co:"Checkout"};
+const TR={};document.querySelectorAll("[data-i]").forEach(e=>TR[e.dataset.i]=e.textContent);const T={tr:TR,en:EN};
+const HERO=[{k:"h1",ic:"apple",t:"#d8cdb8",tr:["Yeni hasat","Çukurbağ elması geldi","Aladağlar’ın eteğinde, Çamardı’da ağaçta olgunlaşıp elle toplandı.","Hemen keşfet","Elma bahçesi fotoğrafı"],en:["New harvest","Çukurbağ apples are in","Ripened on the tree and hand-picked in Çamardı, below the Aladağlar.","Shop now","Apple orchard photo"]},
+{k:"h2",ic:"sack",t:"#d6c9ae",tr:["Annelerimizin tarifi","Yörük tarhanası","Niğde’de ev usulü yapılır, güneşte kurutulur. Katkısız, koruyucusuz.","Tarhanayı incele","Tarhana sereni fotoğrafı"],en:["Our mothers’ recipe","Yörük tarhana","Made at home in Niğde and sun-dried. No additives, no preservatives.","See the tarhana","Tarhana drying photo"]},
+{k:"h3",ic:"box",t:"#cfc4ad",tr:["Kışa hazırlık","Kışlık Paket","Tarhana, salça, ceviz, sos ve sabun: bütün kışın kileri tek kutuda.","Paketi gör","Kışlık paket fotoğrafı"],en:["Ready for winter","The Winter Box","Tarhana, paste, walnuts, spread and soap: a whole winter’s pantry in one box.","See the box","Winter box photo"]}];
+const STRIP=[["home","Kooperatif güvencesi","Cooperative assurance"],["leaf","Katkısız ve koruyucusuz","No additives or preservatives"],["hands","El emeği","Handmade"],["mtn","Niğde, Çukurova, Hatay ve Antep’ten","From Niğde, Çukurova, Hatay and Antep"],["shield","%100 doğal","100% natural"],["truck","Anlaşmalı kargo ile kapınızda","Delivered to your door"]];
+const CAT=[["all","Tüm ürünler","All products","leaf","#e4ddd0"],["kiler","Tarhana & Salça","Tarhana & Paste","jar","#e1d6c4"],["ekmek","Ekmek","Bread","bread","#e3d7c2"],["kahvalti","Kahvaltılık","Breakfast","jar","#e6dccb"],["meyve","Elma & Ceviz","Apples & Walnuts","apple","#ddd6c6"],["sabun","Sabunlar","Soaps","soap","#e7e0d2"]];
+const P=[
+{id:"tar",c:"kiler",ic:"sack",b:"n",tr:["Yörük Tarhanası","Niğde"],en:["Yörük Tarhana","Niğde"],p:320,u:"1 kg"},
+{id:"dsl",c:"kiler",ic:"jar",tr:["Domates Salçası","Çukurova"],en:["Tomato Paste","Çukurova"],p:290,u:"1 kg"},
+{id:"bsl",c:"kiler",ic:"jar",tr:["Acı Biber Salçası","Çukurova"],en:["Hot Pepper Paste","Çukurova"],p:310,u:"1 kg"},
+{id:"ekm",c:"ekmek",ic:"bread",tr:["Ekşi Mayalı Köy Ekmeği","Taş fırın"],en:["Sourdough Village Bread","Stone oven"],p:140,u:"1 adet"},
+{id:"sos",c:"kahvalti",ic:"jar",tr:["Cevizli Kahvaltılık Sos","Yörük usulü"],en:["Walnut Breakfast Spread","Yörük style"],p:180,u:"350 g"},
+{id:"elm",c:"meyve",ic:"apple",b:"n",tr:["Çukurbağ Elması","Çamardı, Niğde"],en:["Çukurbağ Apples","Çamardı, Niğde"],p:210,u:"3 kg"},
+{id:"cev",c:"meyve",ic:"nut",tr:["Çamardı Cevizi","Kabuklu, yeni hasat"],en:["Çamardı Walnuts","In shell, new harvest"],p:480,u:"1 kg"},
+{id:"def",c:"sabun",ic:"soap",tr:["Defne Sabunu","Hatay · krem kılıflı"],en:["Laurel Soap","Hatay · cream sleeve"],p:150,u:"150 g"},
+{id:"zyt",c:"sabun",ic:"soap",o:160,tr:["Zeytinyağlı Sabun","Hatay · krem kılıflı"],en:["Olive Oil Soap","Hatay · cream sleeve"],p:130,u:"150 g"},
+{id:"kis",c:"kiler",ic:"box",tr:["Kışlık Paket","Kasım–Şubat"],en:["Winter Box","November–February"],p:2490,u:"1 kutu"}];
+const FARM=[{k:"f1",t:"#d6ccb9",tr:["Elma üreticisi","Çukurbağ, Çamardı · Elma","Aladağlar’ın eteğinde, kuşaktan kuşağa geçen bir elma bahçesi."],en:["Apple grower","Çukurbağ, Çamardı · Apples","An orchard below the Aladağlar, passed down through generations."]},
+{k:"f2",t:"#d2c8b3",tr:["Ceviz üreticisi","Çamardı, Niğde · Ceviz","Yaşlı ceviz ağaçlarından, güneşte kurutulmuş yeni hasat."],en:["Walnut grower","Çamardı, Niğde · Walnuts","New harvest from old walnut trees, dried in the sun."]},
+{k:"f3",t:"#dcd2bf",tr:["Kadın kooperatifi","Niğde · Tarhana, sos","Köyün kadınlarının birlikte yaptığı tarhana ve kahvaltılıklar."],en:["Women’s cooperative","Niğde · Tarhana, spreads","Tarhana and spreads made together by the village’s women."]}];
+const COOPS=[["Niğde kadın kooperatifi","Niğde women’s cooperative"],["Çamardı üretici kooperatifi","Çamardı growers’ cooperative"],["Çukurova üretici kooperatifi","Çukurova growers’ cooperative"],["Hatay sabun üreticileri","Hatay soap makers"],["Antep üretici kooperatifi","Antep growers’ cooperative"]];
+const SHARE=[["Üreticiye","To the grower",62],["Kargo ve ambalaj","Shipping & packaging",18],["Yayla & Kışlak","Yayla & Kışlak",12],["Kooperatif","Cooperative",8]];
+const A="img/elma-merdiven.jpg",B="img/elma-hasat.jpg";
+let imgs={h1:A,f1:A,st2:A,st1:B,"cat-meyve":B,"p-elm":B};
+const POS={h1:"50% 74%",st2:"50% 40%",f1:"50% 70%",st1:"50% 72%","cat-meyve":"62% 82%","p-elm":"62% 82%"};
+let L="tr",cat="all",sort="d",cart={},slide=0;
+try{cart=JSON.parse(localStorage.getItem("yk_cart")||"{}");L=localStorage.getItem("yk_lang")||"tr"}catch(e){}
+const $=s=>document.querySelector(s),fmt=n=>n.toLocaleString("tr-TR")+" ₺",en=()=>L=="en";
+const save=()=>{try{localStorage.setItem("yk_cart",JSON.stringify(cart));localStorage.setItem("yk_lang",L)}catch(e){}};
+const unit=u=>en()?u.replace("adet","loaf").replace("kutu","box"):u;
+const ph=(k,ic,cap,t)=>`<figure class="ph${imgs[k]?" has":""}" data-k="${k}" style="${t?`--t:${t};`:""}${imgs[k]?`background-image:url(${imgs[k]});background-position:${POS[k]||"center"}`:""}"><svg><use href="#i-${ic}"/></svg>${cap?`<figcaption>${cap}</figcaption>`:""}<label class="up">${en()?"Add photo":"Fotoğraf ekle"}<input type="file" accept="image/*"></label></figure>`;
+function hero(){
+  $("#slides").innerHTML=HERO.map((h,i)=>`<div class="slide${i==slide?" on":""}">${ph(h.k,h.ic,h[L][4],h.t)}</div>`).join("");
+  $("#dots").innerHTML=HERO.map((h,i)=>`<button aria-label="${i+1}" aria-current="${i==slide}" data-s="${i}"></button>`).join("");
+  const h=HERO[slide][L];$("#hk").textContent=h[0];$("#ht").textContent=h[1];$("#hp").textContent=h[2];$("#hb").textContent=h[3];
+}
+function show(i){slide=(i+HERO.length)%HERO.length;document.querySelectorAll(".slide").forEach((s,j)=>s.classList.toggle("on",j==slide));document.querySelectorAll("#dots button").forEach((d,j)=>d.setAttribute("aria-current",j==slide));const h=HERO[slide][L];$("#hk").textContent=h[0];$("#ht").textContent=h[1];$("#hp").textContent=h[2];$("#hb").textContent=h[3]}
+function shop(){
+  $("#cats").innerHTML=CAT.map(c=>`<button class="cat" data-c="${c[0]}" aria-pressed="${c[0]==cat}">${ph("cat-"+c[0],c[3],"",c[4])}<b>${en()?c[2]:c[1]}</b><small>${c[0]=="all"?P.length:P.filter(p=>p.c==c[0]).length} ${en()?"items":"ürün"}</small></button>`).join("");
+  let list=P.filter(p=>cat=="all"||p.c==cat);if(sort=="a")list=[...list].sort((a,b)=>a.p-b.p);if(sort=="z")list=[...list].sort((a,b)=>b.p-a.p);
+  $("#count").textContent=en()?`Showing all ${list.length} results`:`${list.length} sonucun tümü gösteriliyor`;
+  $("#grid").innerHTML=list.map(p=>`<article class="card"><div style="position:relative">${p.b?`<span class="badge n">${en()?"New":"Yeni"}</span>`:p.o?`<span class="badge">${en()?"Sale":"İndirim"}</span>`:""}${ph("p-"+p.id,p.ic,"")}</div>
+   <h3>${p[L][0]}</h3><div class="o">${p[L][1]}</div><div class="price">${p.o?`<s>${fmt(p.o)}</s>`:""}${fmt(p.p)} <small>/ ${unit(p.u)}</small></div><button class="btn ghost" data-add="${p.id}">${en()?"Add to cart":"Sepete ekle"}</button></article>`).join("");
+}
+function rest(){
+  $("#strip").innerHTML=[...STRIP,...STRIP].map(s=>`<span><svg class="ic"><use href="#i-${s[0]}"/></svg>${en()?s[2]:s[1]}</span>`).join("");
+  $("#farm").innerHTML=FARM.map(f=>`<article>${ph(f.k,"user",en()?"Grower photo":"Üretici fotoğrafı",f.t)}<h3>${f[L][0]}</h3><div class="o">${f[L][1]}</div><p>${f[L][2]}</p></article>`).join("");
+  $("#coops").innerHTML=COOPS.map(c=>`<span>${en()?c[1]:c[0]}</span>`).join("");
+  $("#rows").innerHTML=SHARE.map(s=>`<div class="row"><span>${en()?s[1]:s[0]}</span><i><b style="width:${s[2]}%"></b></i><span>${s[2]} ₺</span></div>`).join("");
+}
+function lang(l){L=l;document.documentElement.lang=l;document.querySelectorAll("[data-i]").forEach(e=>{const v=T[l][e.dataset.i];if(v)e.textContent=v});
+  $("#lTR").setAttribute("aria-pressed",l=="tr");$("#lEN").setAttribute("aria-pressed",l=="en");$("#em").placeholder=en()?"Your email address":"E-posta adresiniz";
+  document.querySelectorAll(".ph .up").forEach(u=>u.firstChild.textContent=en()?"Add photo":"Fotoğraf ekle");hero();shop();rest();cartUI();save()}
+function cartUI(){
+  const ids=Object.keys(cart).filter(k=>cart[k]>0&&P.some(p=>p.id==k));let tot=0,n=0;
+  $("#lines").innerHTML=ids.length?ids.map(k=>{const p=P.find(x=>x.id==k);tot+=p.p*cart[k];n+=cart[k];return `<div class="li">${ph("p-"+p.id,p.ic,"")}<div>${p[L][0]}<small>${fmt(p.p)} · ${unit(p.u)}</small></div><div class="qty"><button data-cm="${k}" aria-label="−">−</button><span>${cart[k]}</span><button data-cp="${k}" aria-label="+">+</button></div></div>`}).join("")
+   :`<p style="padding:48px 0;text-align:center;color:var(--mute)">${en()?"Your cart is empty.":"Sepetiniz boş."}</p>`;
+  $("#cnt").textContent=n;$("#tot").textContent=fmt(tot);const left=1000-tot;
+  $("#ship").textContent=left>0?(en()?`Add ${fmt(left)} more for free delivery`:`Ücretsiz kargo için ${fmt(left)} daha ekleyin`):(en()?"You qualify for free delivery":"Kargonuz ücretsiz");
+  $("#prog").style.width=Math.min(100,tot/10)+"%";save()}
+let tt;const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2400)};
+const drawer=o=>{$("#drawer").classList.toggle("on",o);$("#shade").classList.toggle("on",o)};
+document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;
+  if(d.c){cat=d.c;shop()}
+  else if(d.f){cat=d.f;shop();$("#urunler").scrollIntoView()}
+  else if(d.s){show(+d.s);restart()}
+  else if(d.add){const p=P.find(x=>x.id==d.add);cart[d.add]=(cart[d.add]||0)+1;cartUI();toast((en()?"Added to cart: ":"Sepete eklendi: ")+p[L][0])}
+  else if(d.cp){cart[d.cp]++;cartUI()}
+  else if(d.cm){cart[d.cm]--;if(cart[d.cm]<=0)delete cart[d.cm];cartUI()}
+});
+document.addEventListener("change",e=>{const i=e.target;if(i.id=="sort"){sort=i.value;shop();return}
+  if(i.type!="file"||!i.files[0])return;const k=i.closest(".ph").dataset.k,r=new FileReader();
+  r.onload=()=>{imgs[k]=r.result;document.querySelectorAll(`.ph[data-k="${k}"]`).forEach(f=>{f.style.backgroundImage=`url(${r.result})`;f.classList.add("has")})};r.readAsDataURL(i.files[0])});
+$("#lTR").onclick=()=>lang("tr");$("#lEN").onclick=()=>lang("en");
+$("#openCart").onclick=()=>drawer(true);$("#closeCart").onclick=()=>drawer(false);$("#shade").onclick=()=>drawer(false);
+document.addEventListener("keydown",e=>{if(e.key=="Escape")drawer(false)});
+$("#acc").onclick=()=>toast(en()?"Customer accounts will be connected with the store backend.":"Üye girişi mağaza altyapısıyla birlikte bağlanacak.");
+$("#checkout").onclick=()=>toast(Object.keys(cart).length?(en()?"Payment (iyzico / PayTR) will be connected here.":"Ödeme altyapısı (iyzico / PayTR) buraya bağlanacak."):(en()?"Your cart is empty.":"Sepetiniz boş."));
+$("#nf").onsubmit=e=>{e.preventDefault();toast(en()?"Thank you. (Mailing list not connected yet.)":"Teşekkürler. (Bülten servisi henüz bağlı değil.)");e.target.reset()};
+let timer;const restart=()=>{clearInterval(timer);if(!matchMedia("(prefers-reduced-motion: reduce)").matches)timer=setInterval(()=>show(slide+1),6500)};
+document.querySelectorAll(".ph").forEach(f=>{const k=f.dataset.k;if(imgs[k]){f.style.backgroundImage=`url(${imgs[k]})`;f.style.backgroundPosition=POS[k]||"center";f.classList.add("has")}if(!f.querySelector(".up"))f.insertAdjacentHTML("beforeend",`<label class="up">Fotoğraf ekle<input type="file" accept="image/*"></label>`)});
+lang(L);restart();
+}</script>
+</body>
+</html>

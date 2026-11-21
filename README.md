@@ -1,0 +1,19 @@
+# Yayla & Kışlak
+
+Niğde (Çukurbağ, Çamardı), Çukurova, Hatay ve Antep'teki kooperatiflerden ve küçük üreticilerden organik ürünler satan e-ticaret sitesinin ön yüzü.
+
+- Tek sayfa, bağımlılıksız HTML/CSS/JS (`index.html`)
+- Türkçe / İngilizce dil desteği
+- Ürün listesi, kategori filtresi, sıralama, sepet (tarayıcıda saklanır)
+- Fotoğraflar `img/` klasöründe
+
+## Çalıştırma
+
+`index.html` dosyasını tarayıcıda açmak yeterli. Yayına almak için GitHub Pages, Netlify ya da Render kullanılabilir.
+
+## Yapılacaklar
+
+- Gerçek ürün fotoğrafları, fiyatlar ve üretici bilgileri
+- Ödeme altyapısı (iyzico / PayTR)
+- Üyelik ve sipariş yönetimi
+- Bülten servisi
