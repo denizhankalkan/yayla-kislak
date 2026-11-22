@@ -28,7 +28,7 @@ header{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px s
 .hd{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:24px;height:78px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo b{font-weight:600;font-size:22px;letter-spacing:.02em}.logo small{display:block;font-size:12px;color:var(--mute);margin-top:-3px}
-nav{display:flex;justify-content:center;gap:30px;font-weight:500;font-size:16px}nav a{text-decoration:none;padding:8px 0;border-bottom:1.5px solid transparent}nav a:hover{border-color:var(--ol)}
+nav{display:flex;justify-content:center;gap:26px;white-space:nowrap;font-weight:500;font-size:16px}nav a{text-decoration:none;padding:8px 0;border-bottom:1.5px solid transparent}nav a:hover{border-color:var(--ol)}
 .tools{display:flex;align-items:center;gap:6px}
 .ib{border:0;background:none;color:inherit;width:44px;height:44px;display:grid;place-items:center;cursor:pointer;border-radius:50%;position:relative}.ib:hover{background:var(--stone)}
 .ib svg,.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
@@ -110,8 +110,47 @@ footer h3{color:#fff;font-size:16px;margin-bottom:14px}footer ul{list-style:none
 .df{padding:20px 22px;border-top:1px solid var(--line);display:grid;gap:12px}
 .prog{height:4px;background:var(--line);border-radius:2px}.prog i{display:block;height:100%;background:var(--ol);border-radius:2px;transition:width .3s}
 .tot{display:flex;justify-content:space-between;font-size:20px;font-weight:500}
+/* adopt a tree */
+.adopt{background:var(--bg)}
+.ahead{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:44px}
+.ahead p{color:var(--mute);font-size:18px}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;counter-reset:st;margin-bottom:56px}
+.steps div{background:var(--stone);border-radius:8px;padding:24px 22px;counter-increment:st}
+.steps div::before{content:counter(st);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--ol);color:#fff;font-weight:500;margin-bottom:14px}
+.steps p{color:var(--mute);font-size:15px;margin-top:6px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:500 16px Jost;cursor:pointer}
+.tabs button[aria-pressed=true]{border-color:var(--ol);background:var(--ol);color:#fff}.tabs .ic{width:22px;height:22px}
+.tp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);background:var(--stone);border-radius:10px;padding:clamp(16px,2.4vw,32px)}
+.tp>div:first-child{display:flex}.tp>div:first-child>.ph{flex:1;min-height:440px;border-radius:6px}
+.tp h3{font-size:clamp(26px,2.6vw,32px)}.tp .o{color:var(--mute);margin-top:4px}
+.meta{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 18px;margin:22px 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:16px}
+.meta dt{color:var(--mute)}.meta dd{margin:0;font-weight:500}
+.lbl{display:block;font-size:14px;font-weight:500;margin:18px 0 8px}
+.seg{display:inline-flex;background:var(--bg);border-radius:8px;padding:4px;gap:4px;flex-wrap:wrap}
+.seg button{border:0;background:none;color:var(--ink);font:500 15px Jost;min-height:44px;padding:0 18px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ol);color:#fff}.seg small{color:var(--terra);font-weight:500}.seg button[aria-pressed=true] small{color:#fff}
+.tname{font:16px Jost;min-height:48px;padding:0 16px;border:1px solid var(--line);border-radius:6px;width:100%;background:var(--bg);color:var(--ink)}
+.tagw{display:flex;justify-content:center;margin:22px 0 6px}
+.tag{position:relative;background:#b88a5c;background-image:repeating-linear-gradient(95deg,rgba(80,50,20,.08) 0 2px,transparent 2px 9px);color:#2b1d10;border-radius:10px;padding:26px 34px 16px;text-align:center;min-width:260px;max-width:100%;box-shadow:0 8px 20px rgba(60,40,20,.25);transform:rotate(-2deg)}
+.tag::before{content:"";position:absolute;top:9px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--stone);box-shadow:inset 0 1px 2px rgba(0,0,0,.4)}
+.tag b{display:block;font:400 clamp(30px,3.4vw,40px)/1.1 "Great Vibes",cursive;overflow-wrap:anywhere}.tag small{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-top:6px}
+.chk{display:flex;gap:10px;align-items:center;margin-top:16px;font-size:16px;cursor:pointer;min-height:44px}.chk input{width:20px;height:20px;accent-color:var(--ol)}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:18px}
+.buy .big{margin:0}.buy small{display:block;color:var(--mute);font-size:14px;font-weight:400}
+.inc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 32px;margin:64px 0}
+.inc .ic{width:38px;height:38px;stroke:var(--ol);stroke-width:1.2;margin-bottom:10px}.inc p{color:var(--mute);font-size:15px;margin-top:4px}
+.faq{max-width:860px}.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-weight:500;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";font-size:24px;line-height:1;color:var(--ol)}.faq details[open] summary::after{content:"−"}
+.faq details p{color:var(--mute);padding:0 0 20px;max-width:46em}
+.corp{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:var(--ol-d);color:#f1efe6;border-radius:10px;padding:clamp(24px,3vw,40px);margin-top:56px}
+.corp p{color:#d6d8c8;margin-top:6px;max-width:38em}
+@media(max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.inc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.ahead,.tp{grid-template-columns:minmax(0,1fr)}.tp>div:first-child>.ph{min-height:0;aspect-ratio:4/3}.steps,.inc{grid-template-columns:minmax(0,1fr)}}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,140%);background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:6px;z-index:70;transition:transform .3s,visibility .3s;visibility:hidden;max-width:92vw;text-align:center;font-size:15px}.toast.on{transform:translate(-50%,0);visibility:visible}
-@media(max-width:1000px){nav{display:none}.hd{grid-template-columns:auto minmax(0,1fr)}.tools{justify-self:end}.cats{grid-template-columns:repeat(3,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dg{grid-template-columns:repeat(2,minmax(0,1fr))}.fc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1180px){nav{display:none}.hd{grid-template-columns:auto minmax(0,1fr)}.tools{justify-self:end}}
+@media(max-width:1000px){.cats{grid-template-columns:repeat(3,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dg{grid-template-columns:repeat(2,minmax(0,1fr))}.fc{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.story,.split,.split.rev,.fair{grid-template-columns:minmax(0,1fr)}.split.rev .ph{order:0}.split .ph{min-height:300px}.farm{grid-template-columns:minmax(0,1fr)}.farm .ph{aspect-ratio:4/3}.coll{justify-self:center}}
 @media(max-width:600px){.logo small{display:none}.logo b{font-size:17px}.logo svg{width:30px;height:30px}.lang button{min-width:34px}.hcard{position:relative;left:auto;bottom:auto;margin:-60px 16px 0;max-width:none}.slides{height:360px}.dots{bottom:auto;top:310px}.grid{gap:22px 14px}.card h3{font-size:16px}.row{grid-template-columns:7.5em minmax(0,1fr) 3.5em}.dg{grid-template-columns:minmax(0,1fr)}.fc{grid-template-columns:minmax(0,1fr)}.ib.hide{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
@@ -132,13 +171,19 @@ footer h3{color:#fff;font-size:16px;margin-bottom:14px}footer ul{list-style:none
 <symbol id="i-home" viewBox="0 0 48 48"><path d="M7 22L24 9l17 13M11 19v21h26V19M20 40V29h8v11"/></symbol>
 <symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 6l15 6v10c0 10-6 17-15 20C15 39 9 32 9 22V12zM17 24l5 5 9-10"/></symbol>
 <symbol id="i-mtn" viewBox="0 0 48 48"><path d="M4 38l13-20 8 11 6-8 13 17zM17 18l3 5-3-1-3 2"/></symbol>
-<symbol id="i-user" viewBox="0 0 48 48"><path d="M24 24a8 8 0 1 0 0-.1M10 42c1-8 7-12 14-12s13 4 14 12"/></symbol>
+<symbol id="i-tree" viewBox="0 0 48 48"><path d="M24 44V26M24 32l-6-5M24 29l5-4M24 6c-8 0-13 6-13 12 0 7 6 10 13 10s13-3 13-10c0-6-5-12-13-12z"/></symbol>
+<symbol id="i-cherry" viewBox="0 0 48 48"><path d="M15 38a7 7 0 1 0 0-.1M33 36a7 7 0 1 0 0-.1M15 31c2-10 6-18 14-23M33 29c-1-8-1-15-4-21M29 8c4-2 9-1 11 2-4 2-8 2-11-2"/></symbol>
+<symbol id="i-tag" viewBox="0 0 48 48"><path d="M8 10h18l14 14-16 16L8 26zM16 18a2 2 0 1 0 0 .1"/></symbol>
+<symbol id="i-cam" viewBox="0 0 48 48"><path d="M6 16h8l4-5h12l4 5h8v22H6zM24 34a8 8 0 1 0 0-.1"/></symbol>
+<symbol id="i-cert" viewBox="0 0 48 48"><path d="M8 8h32v24H8zM14 16h20M14 22h12M30 30a5 5 0 1 0 0-.1M27 34l-2 8 5-3 5 3-2-8"/></symbol>
+<symbol id="i-sun" viewBox="0 0 48 48"><path d="M24 31a7 7 0 1 0 0-.1M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M37 11l-4 4M15 33l-4 4"/></symbol>
+<symbol id="i-user"viewBox="0 0 48 48"><path d="M24 24a8 8 0 1 0 0-.1M10 42c1-8 7-12 14-12s13 4 14 12"/></symbol>
 </defs></svg>
 
 <div class="ann" data-i="ann">1.000 ₺ ve üzeri siparişlerde ücretsiz kargo · Kooperatiften doğrudan kapınıza</div>
 <header><div class="wrap hd">
   <a class="logo" href="#"><svg width="38" height="38" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--ol)"><circle cx="24" cy="24" r="22"/><path d="M9 27l9-12 6 7 4-5 11 10M9 33h30"/></svg><span><b>YAYLA &amp; KIŞLAK</b><small data-i="tag">Toros’tan sofraya</small></span></a>
-  <nav><a href="#urunler" data-i="n1">Ürünlerimiz</a><a href="#kislik" data-i="n2">Kışlık Paket</a><a href="#hikaye" data-i="n3">Hakkımızda</a><a href="#ciftciler" data-i="n4">Üreticilerimiz</a><a href="#iletisim" data-i="n5">İletişim</a></nav>
+  <nav><a href="#urunler" data-i="n1">Ürünlerimiz</a><a href="#agac" data-i="n6">Ağaç Sahiplen</a><a href="#kislik" data-i="n2">Kışlık Paket</a><a href="#hikaye" data-i="n3">Hakkımızda</a><a href="#ciftciler" data-i="n4">Üreticilerimiz</a><a href="#iletisim" data-i="n5">İletişim</a></nav>
   <div class="tools">
     <a class="ib hide" href="#urunler" aria-label="Ara"><svg><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg></a>
     <button class="ib hide" aria-label="Hesap" id="acc"><svg><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.5-7 8-7s7 2.5 8 7"/></svg></button>
@@ -160,6 +205,51 @@ footer h3{color:#fff;font-size:16px;margin-bottom:14px}footer ul{list-style:none
   <div class="bar"><span id="count"></span><select id="sort" aria-label="Sıralama"><option value="d" data-i="o1">Varsayılan sıralama</option><option value="a" data-i="o2">Fiyat: düşükten yükseğe</option><option value="z" data-i="o3">Fiyat: yüksekten düşüğe</option></select></div>
   <div class="grid" id="grid"></div>
   <p class="note" data-i="sample">Fiyatlar ve gramajlar örnektir. Görsellerin üzerine gelip “Fotoğraf ekle” ile kendi ürün fotoğraflarınızı deneyebilirsiniz.</p>
+</div></section>
+
+<section class="band adopt" id="agac"><div class="wrap">
+  <div class="ahead">
+    <div><div class="kick" data-i="tK">Yeni · Ağaç Sahiplen</div><div class="script" data-i="tS">Niğde’de bir ağacınız olsun</div></div>
+    <p data-i="tP">Bahçeniz yoksa dert değil. Çamardı’daki bir elma, ceviz ya da kiraz ağacını bir yıllığına sahiplenin. Adını siz koyun, yıl boyu nasıl büyüdüğünü izleyin, hasadı kapınıza gelsin. Ödemeniz hasattan önce üreticiye ulaşır; mazot ve gübre derdi ağaç meyve vermeden çözülür.</p>
+  </div>
+  <div class="steps">
+    <div><h3 data-i="s1">Ağacınızı seçin</h3><p data-i="s1p">Elma, ceviz ya da kiraz. Her ağaç numaralıdır, bahçesi ve üreticisi bellidir.</p></div>
+    <div><h3 data-i="s2">Adını siz koyun</h3><p data-i="s2p">Ağacınıza isim levhası asılır, sahiplik sertifikanız e-postanıza gelir.</p></div>
+    <div><h3 data-i="s3">Yıl boyu izleyin</h3><p data-i="s3p">Çiçek açtığında, meyve tuttuğunda, hasat yaklaştığında üreticiden fotoğraf ve video.</p></div>
+    <div><h3 data-i="s4">Hasat kapınızda</h3><p data-i="s4p">Ağacınızın ürünü elle toplanır, aynı gün kargoya verilir.</p></div>
+  </div>
+
+  <div class="tabs" role="group" aria-label="Ağaç türü" id="ttabs"></div>
+  <div class="tp">
+    <div id="tph"></div>
+    <div>
+      <h3 id="tn"></h3><div class="o" id="ts"></div>
+      <dl class="meta" id="tmeta"></dl>
+      <span class="lbl" data-i="tY">Süre</span>
+      <div class="seg" role="group" aria-label="Süre" id="tyrs"></div>
+      <label class="lbl" for="tname" data-i="tL">Ağacınıza bir isim verin</label>
+      <input class="tname" id="tname" maxlength="22" autocomplete="off">
+      <div class="tagw"><div class="tag" aria-live="polite"><b id="tagn"></b><small id="tags"></small></div></div>
+      <label class="chk"><input type="checkbox" id="tgift"><span data-i="tG">Hediye olarak gönder (sertifika onun adına düzenlenir)</span></label>
+      <div class="buy"><div><div class="big" id="tprice"></div><small id="tper"></small></div><button class="btn" id="adopt" data-adopt="1" data-i="tB">Ağacı sahiplen</button></div>
+    </div>
+  </div>
+  <p class="note" data-i="tN">Fiyatlar ve garanti edilen miktarlar örnektir; üreticilerle netleştirilecektir.</p>
+
+  <h2 style="margin-top:64px" data-i="iT">Her sahiplenmede</h2>
+  <div class="inc">
+    <div><svg class="ic"><use href="#i-cert"/></svg><h3 data-i="i1">Sahiplik sertifikası</h3><p data-i="i1p">Ağacınızın numarası, türü, bahçesi ve üreticisiyle; dijital ve basılı.</p></div>
+    <div><svg class="ic"><use href="#i-tag"/></svg><h3 data-i="i2">İsim levhası</h3><p data-i="i2p">Verdiğiniz isim ahşap levhaya yazılır ve ağacınıza asılır; fotoğrafı size gelir.</p></div>
+    <div><svg class="ic"><use href="#i-cam"/></svg><h3 data-i="i3">Ağaç günlüğü</h3><p data-i="i3p">Mevsim başına en az bir fotoğraf ya da video: tomurcuk, çiçek, meyve, hasat.</p></div>
+    <div><svg class="ic"><use href="#i-shield"/></svg><h3 data-i="i4">Hasat güvencesi</h3><p data-i="i4p">Don ya da dolu olursa eksik kalan miktar aynı bölgeden eşdeğer ürünle tamamlanır.</p></div>
+    <div><svg class="ic"><use href="#i-sun"/></svg><h3 data-i="i5">Hasat gününe davet</h3><p data-i="i5p">İsterseniz Çamardı’ya gelin, kendi ağacınızdan toplayın; köy kahvaltısı bizden.</p></div>
+    <div><svg class="ic"><use href="#i-hands"/></svg><h3 data-i="i6">Peşin destek</h3><p data-i="i6p">Ödemenin büyük kısmı hasattan önce üreticiye geçer; tüccara mecbur kalmaz.</p></div>
+  </div>
+
+  <h2 data-i="qT" style="margin-bottom:12px">Sıkça sorulanlar</h2>
+  <div class="faq" id="tfaq"></div>
+
+  <div class="corp"><div><h3 style="font-size:22px" data-i="cpT">Şirketler ve davetler için</h3><p data-i="cpP">Ekibinize, müşterilerinize ya da düğün davetlilerinize birer ağaç. Ortak bir bahçe ve ortak bir hasat günü planlayalım.</p></div><a class="btn light" href="#iletisim" data-i="cpB">Bize yazın</a></div>
 </div></section>
 
 <section class="band" id="hikaye" style="background:var(--stone)"><div class="wrap story">
@@ -216,7 +306,7 @@ footer h3{color:#fff;font-size:16px;margin-bottom:14px}footer ul{list-style:none
 <footer><div class="wrap">
   <div class="fc">
   <div><div class="logo" style="color:#fff"><b>YAYLA &amp; KIŞLAK</b></div><p style="margin-top:12px;max-width:30em" data-i="fA">Niğde, Çukurova, Hatay ve Antep’in kooperatiflerinden ve küçük üreticilerinden organik, katkısız gıda ve doğal sabun.</p></div>
-  <div><h3 data-i="f1">Alışveriş</h3><ul><li><a href="#urunler" data-i="n1">Ürünlerimiz</a></li><li><a href="#kislik" data-i="n2">Kışlık Paket</a></li><li><a href="#sabun" data-i="fs">Hatay Sabunları</a></li></ul></div>
+  <div><h3 data-i="f1">Alışveriş</h3><ul><li><a href="#urunler" data-i="n1">Ürünlerimiz</a></li><li><a href="#agac" data-i="n6">Ağaç Sahiplen</a></li><li><a href="#kislik" data-i="n2">Kışlık Paket</a></li><li><a href="#sabun" data-i="fs">Hatay Sabunları</a></li></ul></div>
   <div><h3 data-i="f2">Kurumsal</h3><ul><li><a href="#hikaye" data-i="n3">Hakkımızda</a></li><li><a href="#ciftciler" data-i="n4">Üreticilerimiz</a></li><li><a href="#iletisim" data-i="n5">İletişim</a></li></ul></div>
   <div><h3 data-i="f3">Yardım</h3><ul><li data-i="h1">Kargo ve teslimat</li><li data-i="h2">İade ve değişim</li><li data-i="h3">Mesafeli satış sözleşmesi</li><li data-i="h4">KVKK aydınlatma metni</li></ul></div>
   </div>
@@ -230,12 +320,13 @@ footer h3{color:#fff;font-size:16px;margin-bottom:14px}footer ul{list-style:none
 <div class="toast" id="toast" role="status"></div>
 
 <script>{
-const EN={ann:"Free delivery on orders over 1,000 ₺ · Straight from cooperatives to your door",tag:"From the Taurus to your table",n1:"Shop",n2:"Winter Box",n3:"About",n4:"Our Growers",n5:"Contact",cK:"Categories",cT:"Seasonal, additive-free, handmade",o1:"Default sorting",o2:"Price: low to high",o3:"Price: high to low",sample:"Prices and weights are samples. Hover over any image and use “Add photo” to try your own product photos.",sT:"From the highlands to your table",sP:"Yörüks spent summers in the highland pastures (yayla) of Niğde and winters in the lowland camps (kışlak) of Çukurova. We were born at the table of a Yörük family on that very route. Apples and walnuts from Çukurbağ, tarhana from Niğde, paste from Çukurova, soap from Hatay and flavours from Antep: we buy them directly from cooperatives and small farmers and bring them to you. Our aim is to make organic food accessible and give growers a fair return for their work.",sB:"Meet our growers",c1:"Family / team photo",c2:"Highland photo",c3:"Winter box photo",c4:"Soap in cream sleeve photo",kK:"Limited availability",kT:"Winter Box",kP:"A Yörük pantry for a family’s whole winter, in one box. Shipped monthly from November to February.",k1:"2 kg Yörük tarhana",k2:"2 kg tomato paste, 1 kg pepper paste",k3:"1 kg Çamardı walnuts",k4:"2 jars of breakfast spread",k5:"2 Hatay laurel soaps",kB:"Add to cart",bK:"From Hatay",bT:"Cauldron-made, in a cream sleeve",bP:"Laurel and olive-oil soaps made the traditional way by Antakya soap makers. Each one ships in a cream cotton sleeve that doubles as gift wrap and soap pouch.",b1:"Laurel, olive oil and goat’s milk varieties",b2:"No palm oil, perfume or preservatives",b3:"Made with women producers in Hatay",bB:"Explore the soaps",fK:"Our growers",fT:"Know who grew it",fP:"Behind every product is an orchard, a family or a cooperative. We introduce them to you.",fN:"Sample content: grower names and photos will be added with their permission.",dT:"What makes us different",d1:"Pure and natural",d1p:"No preservatives, colourings or chemical fertiliser.",d2:"Cooperative assurance",d2p:"Registered cooperatives and growers we know.",d3:"Fair price",d3p:"No middlemen; most of the margin goes to the grower.",d4:"Plastic-free shipping",d4p:"At your door in 2–4 working days.",aK:"Transparent pricing",aT:"Fuel costs are real, so is labour. Prices should be fair.",aP:"As diesel, fertiliser and transport costs rise, growers are hit hardest. We buy directly and show openly where every 100 ₺ you spend goes.",aN:"Shares are samples, to be updated with real costs.",nT:"Hear about the new harvest first",nP:"Seasonal products, the winter box window and cooperative stories, once a month.",nB:"Subscribe",fA:"Organic, additive-free food and natural soap from cooperatives and small growers in Niğde, Çukurova, Hatay and Antep.",f1:"Shop",f2:"Company",f3:"Help",fs:"Hatay Soaps",h1:"Shipping and delivery",h2:"Returns and exchanges",h3:"Distance sales agreement",h4:"Privacy notice",pay:"Secure payment · Card and bank transfer",cart:"Your cart",total:"Subtotal",co:"Checkout"};
+const EN={ann:"Free delivery on orders over 1,000 ₺ · Straight from cooperatives to your door",tag:"From the Taurus to your table",n1:"Shop",n2:"Winter Box",n3:"About",n4:"Our Growers",n5:"Contact",n6:"Adopt a Tree",tK:"New · Adopt a Tree",tS:"Your own tree in Niğde",tP:"No garden? No problem. Adopt an apple, walnut or cherry tree in Çamardı for a year. You name it, watch it grow all year, and its harvest comes to your door. Your payment reaches the grower before the harvest, so fuel and fertiliser are covered before the tree even fruits.",s1:"Choose your tree",s1p:"Apple, walnut or cherry. Every tree is numbered, with a known orchard and grower.",s2:"Give it a name",s2p:"A name tag goes on your tree and your adoption certificate arrives by email.",s3:"Follow it all year",s3p:"Photos and videos from the grower when it blossoms, sets fruit and nears harvest.",s4:"Harvest at your door",s4p:"Your tree’s fruit is hand-picked and shipped the same day.",tY:"Duration",tL:"Give your tree a name",tG:"Send as a gift (certificate issued in their name)",tB:"Adopt this tree",tN:"Prices and guaranteed amounts are samples, to be confirmed with growers.",iT:"Every adoption includes",i1:"Adoption certificate",i1p:"With your tree’s number, variety, orchard and grower; digital and printed.",i2:"Name tag",i2p:"Your chosen name is written on a wooden tag hung on your tree; we send you a photo.",i3:"Tree diary",i3p:"At least one photo or video each season: bud, blossom, fruit, harvest.",i4:"Harvest guarantee",i4p:"If frost or hail strikes, any shortfall is made up with equivalent produce from the same region.",i5:"Harvest-day invitation",i5p:"Come to Çamardı and pick from your own tree if you like; village breakfast is on us.",i6:"Paid up front",i6p:"Most of your payment reaches the grower before harvest, so they don’t have to sell to traders.",qT:"Frequently asked",cpT:"For companies and events",cpP:"A tree for each of your team, clients or wedding guests. Let’s plan a shared orchard and a shared harvest day.",cpB:"Write to us",cK:"Categories",cT:"Seasonal, additive-free, handmade",o1:"Default sorting",o2:"Price: low to high",o3:"Price: high to low",sample:"Prices and weights are samples. Hover over any image and use “Add photo” to try your own product photos.",sT:"From the highlands to your table",sP:"Yörüks spent summers in the highland pastures (yayla) of Niğde and winters in the lowland camps (kışlak) of Çukurova. We were born at the table of a Yörük family on that very route. Apples and walnuts from Çukurbağ, tarhana from Niğde, paste from Çukurova, soap from Hatay and flavours from Antep: we buy them directly from cooperatives and small farmers and bring them to you. Our aim is to make organic food accessible and give growers a fair return for their work.",sB:"Meet our growers",c1:"Family / team photo",c2:"Highland photo",c3:"Winter box photo",c4:"Soap in cream sleeve photo",kK:"Limited availability",kT:"Winter Box",kP:"A Yörük pantry for a family’s whole winter, in one box. Shipped monthly from November to February.",k1:"2 kg Yörük tarhana",k2:"2 kg tomato paste, 1 kg pepper paste",k3:"1 kg Çamardı walnuts",k4:"2 jars of breakfast spread",k5:"2 Hatay laurel soaps",kB:"Add to cart",bK:"From Hatay",bT:"Cauldron-made, in a cream sleeve",bP:"Laurel and olive-oil soaps made the traditional way by Antakya soap makers. Each one ships in a cream cotton sleeve that doubles as gift wrap and soap pouch.",b1:"Laurel, olive oil and goat’s milk varieties",b2:"No palm oil, perfume or preservatives",b3:"Made with women producers in Hatay",bB:"Explore the soaps",fK:"Our growers",fT:"Know who grew it",fP:"Behind every product is an orchard, a family or a cooperative. We introduce them to you.",fN:"Sample content: grower names and photos will be added with their permission.",dT:"What makes us different",d1:"Pure and natural",d1p:"No preservatives, colourings or chemical fertiliser.",d2:"Cooperative assurance",d2p:"Registered cooperatives and growers we know.",d3:"Fair price",d3p:"No middlemen; most of the margin goes to the grower.",d4:"Plastic-free shipping",d4p:"At your door in 2–4 working days.",aK:"Transparent pricing",aT:"Fuel costs are real, so is labour. Prices should be fair.",aP:"As diesel, fertiliser and transport costs rise, growers are hit hardest. We buy directly and show openly where every 100 ₺ you spend goes.",aN:"Shares are samples, to be updated with real costs.",nT:"Hear about the new harvest first",nP:"Seasonal products, the winter box window and cooperative stories, once a month.",nB:"Subscribe",fA:"Organic, additive-free food and natural soap from cooperatives and small growers in Niğde, Çukurova, Hatay and Antep.",f1:"Shop",f2:"Company",f3:"Help",fs:"Hatay Soaps",h1:"Shipping and delivery",h2:"Returns and exchanges",h3:"Distance sales agreement",h4:"Privacy notice",pay:"Secure payment · Card and bank transfer",cart:"Your cart",total:"Subtotal",co:"Checkout"};
 const TR={};document.querySelectorAll("[data-i]").forEach(e=>TR[e.dataset.i]=e.textContent);const T={tr:TR,en:EN};
 const HERO=[{k:"h1",ic:"apple",t:"#d8cdb8",tr:["Yeni hasat","Çukurbağ elması geldi","Aladağlar’ın eteğinde, Çamardı’da ağaçta olgunlaşıp elle toplandı.","Hemen keşfet","Elma bahçesi fotoğrafı"],en:["New harvest","Çukurbağ apples are in","Ripened on the tree and hand-picked in Çamardı, below the Aladağlar.","Shop now","Apple orchard photo"]},
+{k:"h4",ic:"tree",t:"#d3cab4",a:"#agac",tr:["Yeni · Ağaç Sahiplen","Niğde’de bir ağacınız olsun","Çamardı’da bir elma, ceviz ya da kiraz ağacı sahiplenin; adını siz koyun, hasadı kapınıza gelsin.","Ağacını seç","Ağaç fotoğrafı"],en:["New · Adopt a Tree","Your own tree in Niğde","Adopt an apple, walnut or cherry tree in Çamardı; name it, and its harvest comes to your door.","Choose your tree","Tree photo"]},
 {k:"h2",ic:"sack",t:"#d6c9ae",tr:["Annelerimizin tarifi","Yörük tarhanası","Niğde’de ev usulü yapılır, güneşte kurutulur. Katkısız, koruyucusuz.","Tarhanayı incele","Tarhana sereni fotoğrafı"],en:["Our mothers’ recipe","Yörük tarhana","Made at home in Niğde and sun-dried. No additives, no preservatives.","See the tarhana","Tarhana drying photo"]},
 {k:"h3",ic:"box",t:"#cfc4ad",tr:["Kışa hazırlık","Kışlık Paket","Tarhana, salça, ceviz, sos ve sabun: bütün kışın kileri tek kutuda.","Paketi gör","Kışlık paket fotoğrafı"],en:["Ready for winter","The Winter Box","Tarhana, paste, walnuts, spread and soap: a whole winter’s pantry in one box.","See the box","Winter box photo"]}];
-const STRIP=[["home","Kooperatif güvencesi","Cooperative assurance"],["leaf","Katkısız ve koruyucusuz","No additives or preservatives"],["hands","El emeği","Handmade"],["mtn","Niğde, Çukurova, Hatay ve Antep’ten","From Niğde, Çukurova, Hatay and Antep"],["shield","%100 doğal","100% natural"],["truck","Anlaşmalı kargo ile kapınızda","Delivered to your door"]];
+const STRIP=[["tree","Niğde’de bir ağaç sahiplenin","Adopt a tree in Niğde"],["home","Kooperatif güvencesi","Cooperative assurance"],["leaf","Katkısız ve koruyucusuz","No additives or preservatives"],["hands","El emeği","Handmade"],["mtn","Niğde, Çukurova, Hatay ve Antep’ten","From Niğde, Çukurova, Hatay and Antep"],["shield","%100 doğal","100% natural"],["truck","Anlaşmalı kargo ile kapınızda","Delivered to your door"]];
 const CAT=[["all","Tüm ürünler","All products","leaf","#e4ddd0"],["kiler","Tarhana & Salça","Tarhana & Paste","jar","#e1d6c4"],["ekmek","Ekmek","Bread","bread","#e3d7c2"],["kahvalti","Kahvaltılık","Breakfast","jar","#e6dccb"],["meyve","Elma & Ceviz","Apples & Walnuts","apple","#ddd6c6"],["sabun","Sabunlar","Soaps","soap","#e7e0d2"]];
 const P=[
 {id:"tar",c:"kiler",ic:"sack",b:"n",tr:["Yörük Tarhanası","Niğde"],en:["Yörük Tarhana","Niğde"],p:320,u:"1 kg"},
@@ -253,9 +344,39 @@ const FARM=[{k:"f1",t:"#d6ccb9",tr:["Elma üreticisi","Çukurbağ, Çamardı · 
 {k:"f3",t:"#dcd2bf",tr:["Kadın kooperatifi","Niğde · Tarhana, sos","Köyün kadınlarının birlikte yaptığı tarhana ve kahvaltılıklar."],en:["Women’s cooperative","Niğde · Tarhana, spreads","Tarhana and spreads made together by the village’s women."]}];
 const COOPS=[["Niğde kadın kooperatifi","Niğde women’s cooperative"],["Çamardı üretici kooperatifi","Çamardı growers’ cooperative"],["Çukurova üretici kooperatifi","Çukurova growers’ cooperative"],["Hatay sabun üreticileri","Hatay soap makers"],["Antep üretici kooperatifi","Antep growers’ cooperative"]];
 const SHARE=[["Üreticiye","To the grower",62],["Kargo ve ambalaj","Shipping & packaging",18],["Yayla & Kışlak","Yayla & Kışlak",12],["Kooperatif","Cooperative",8]];
+const TREES=[
+{id:"t-elm",ic:"apple",t:"#d8cdb8",p:2400,tr:{n:"Elma ağacı",s:"Çukurbağ, Çamardı · Aladağlar’ın eteğinde",h:"Eylül – Kasım",g:"En az 40 kg elma",d:"3 gönderim: Eylül, Ekim, Kasım",x:"Fazlası pekmez ve kuru elma olarak gelir"},en:{n:"Apple tree",s:"Çukurbağ, Çamardı · below the Aladağlar",h:"September – November",g:"At least 40 kg of apples",d:"3 deliveries: Sept, Oct, Nov",x:"Extra fruit comes as molasses and dried apple"}},
+{id:"t-cev",ic:"nut",t:"#d2c8b3",p:3600,tr:{n:"Ceviz ağacı",s:"Çamardı, Niğde · yaşlı ceviz ağaçları",h:"Eylül – Ekim",g:"En az 8 kg kabuklu ceviz",d:"1 gönderim: Ekim",x:"Güneşte kurutulmuş, yeni hasat"},en:{n:"Walnut tree",s:"Çamardı, Niğde · old walnut trees",h:"September – October",g:"At least 8 kg of walnuts in shell",d:"1 delivery: October",x:"Sun-dried, new harvest"}},
+{id:"t-kir",ic:"cherry",t:"#dcc9bd",p:2900,tr:{n:"Kiraz ağacı",s:"Niğde · dalından taze",h:"Haziran – Temmuz",g:"En az 15 kg kiraz",d:"2 gönderim, soğuk zincirle",x:"Fazlası reçel ve kurutma olarak gelir"},en:{n:"Cherry tree",s:"Niğde · fresh from the branch",h:"June – July",g:"At least 15 kg of cherries",d:"2 deliveries, cold chain",x:"Extra fruit comes as jam and dried cherries"}}];
+const TLBL={tr:["Hasat dönemi","Garanti edilen ürün","Gönderim","Fazla ürün","Üretici"],en:["Harvest","Guaranteed yield","Delivery","Extra yield","Grower"]};
+const FAQ=[["Ağaç gerçekten benim mi oluyor?","Do I actually own the tree?","Ağaç ve arazi üreticide kalır. Siz o ağacın bir yıllık (ya da üç yıllık) hasadının sahibi olursunuz. Bu, adı ve numarası belli bir ağaç için yapılan bir hasat ön siparişidir.","The tree and the land stay with the grower. You own the harvest of that tree for one (or three) years. It is a pre-order for the harvest of a specific, numbered tree."],
+["Hasat az olursa ne olur?","What if the harvest is poor?","Garanti edilen miktarın altında kalırsa eksiği aynı bölgeden eşdeğer ürünle tamamlarız. Tamamlayamazsak farkı bir sonraki yıla aktarır ya da iade ederiz.","If your tree falls short of the guaranteed amount, we make it up with equivalent produce from the same region. If we can’t, we carry the difference to next year or refund it."],
+["Ağaç fazla ürün verirse?","What if the tree gives more?","Garantinin üstündeki ürünün bir kısmı işlenip (pekmez, reçel, kurutma) size gönderilir, kalanı üreticide kalır.","Part of the extra fruit is made into molasses, jam or dried fruit and sent to you; the rest stays with the grower."],
+["Ne zaman sahiplenebilirim?","When can I adopt?","Yılın her zamanı. Sahiplenme, ağacın bir sonraki hasadını kapsar. Kiraz için Nisan sonuna kadar sahiplenirseniz aynı yazın hasadını alırsınız.","Any time of year. An adoption covers the tree’s next harvest. Adopt a cherry tree by the end of April to receive that summer’s harvest."],
+["Ağacımı ziyaret edebilir miyim?","Can I visit my tree?","Evet. Hasat gününe davetlisiniz; diğer zamanlarda da önceden haber vererek bahçeye gelebilirsiniz.","Yes. You are invited on harvest day, and you can visit at other times by letting us know in advance."],
+["Hediye olarak alabilir miyim?","Can I give it as a gift?","Evet. “Hediye olarak gönder”i işaretleyin; sertifika ve güncellemeler onun adına gider, ilk mesaj sizden.","Yes. Tick “Send as a gift”; the certificate and updates go to them, with a first message from you."],
+["Üç yıllık sahiplenmenin farkı ne?","Why adopt for three years?","Aynı ağaç üç yıl sizindir, yıllık fiyat %10 daha düşüktür. Üretici de üç yılını planlayabilir.","The same tree is yours for three years at 10% less per year, and the grower can plan three years ahead."]];
+let ti=0,ty=1,tnm="",tgift=false;
+const tprice=(t,y)=>y==3?Math.round(t.p*3*0.9/10)*10:t.p;
+function trees(){const t=TREES[ti],d=t[L],lb=TLBL[L];
+  $("#ttabs").innerHTML=TREES.map((x,i)=>`<button data-tsp="${i}" aria-pressed="${i==ti}"><svg class="ic"><use href="#i-${x.ic}"/></svg>${x[L].n}</button>`).join("");
+  $("#tph").innerHTML=ph("tr-"+t.id,t.ic,en()?"Orchard photo":"Bahçe fotoğrafı",t.t);
+  $("#tn").textContent=d.n;$("#ts").textContent=d.s;
+  $("#tmeta").innerHTML=[[lb[0],d.h],[lb[1],d.g],[lb[2],d.d],[lb[3],d.x],[lb[4],FARM[ti==1?1:0][L][0]]].map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("");
+  $("#tyrs").innerHTML=[1,3].map(y=>`<button data-ty="${y}" aria-pressed="${y==ty}">${y==1?(en()?"1 year":"1 yıl"):(en()?"3 years ":"3 yıl ")+"<small>−%10</small>"}</button>`).join("");
+  $("#tname").placeholder=en()?"e.g. Grandma’s Tree":"ör. Anneannemin Ağacı";
+  $("#tprice").textContent=fmt(tprice(t,ty));
+  $("#tper").textContent=ty==3?(en()?`3 harvests · ${fmt(tprice(t,3)/3)} per year`:`3 hasat · yıllık ${fmt(tprice(t,3)/3)}`):(en()?"1 harvest · all shipping included":"1 hasat · tüm kargolar dahil");
+  $("#tfaq").innerHTML=FAQ.map(f=>`<details><summary>${en()?f[1]:f[0]}</summary><p>${en()?f[3]:f[2]}</p></details>`).join("");
+  tag()}
+function tag(){const t=TREES[ti];$("#tagn").textContent=tnm.trim()||(en()?"Your tree’s name":"Ağacınızın adı");$("#tags").textContent=`${t[L].n} · Çamardı · ${new Date().getFullYear()+1}`}
+const tkey=()=>[TREES[ti].id,ty,encodeURIComponent(tnm.trim()),tgift?1:0].join(":");
+function ITEM(k){const p=P.find(x=>x.id==k);if(p)return{n:p[L][0],sub:fmt(p.p)+" · "+unit(p.u),p:p.p,ic:p.ic,k:"p-"+p.id};
+  const a=k.split(":"),t=TREES.find(x=>x.id==a[0]);if(!t)return null;const nm=decodeURIComponent(a[2]||""),y=+a[1],pr=tprice(t,y);
+  return{n:t[L].n+(nm?` “${nm}”`:""),sub:fmt(pr)+" · "+(y==3?(en()?"3 years":"3 yıl"):(en()?"1 year":"1 yıl"))+(a[3]=="1"?(en()?" · gift":" · hediye"):""),p:pr,ic:t.ic,k:"tr-"+t.id}}
 const A="img/elma-merdiven.jpg",B="img/elma-hasat.jpg";
-let imgs={h1:A,f1:A,st2:A,st1:B,"cat-meyve":B,"p-elm":B};
-const POS={h1:"50% 74%",st2:"50% 40%",f1:"50% 70%",st1:"50% 72%","cat-meyve":"62% 82%","p-elm":"62% 82%"};
+let imgs={"tr-t-elm":A,h4:B,h1:A,f1:A,st2:A,st1:B,"cat-meyve":B,"p-elm":B};
+const POS={"tr-t-elm":"50% 74%",h4:"50% 72%",h1:"50% 74%",st2:"50% 40%",f1:"50% 70%",st1:"50% 72%","cat-meyve":"62% 82%","p-elm":"62% 82%"};
 let L="tr",cat="all",sort="d",cart={},slide=0;
 try{cart=JSON.parse(localStorage.getItem("yk_cart")||"{}");L=localStorage.getItem("yk_lang")||"tr"}catch(e){}
 const $=s=>document.querySelector(s),fmt=n=>n.toLocaleString("tr-TR")+" ₺",en=()=>L=="en";
@@ -265,9 +386,9 @@ const ph=(k,ic,cap,t)=>`<figure class="ph${imgs[k]?" has":""}" data-k="${k}" sty
 function hero(){
   $("#slides").innerHTML=HERO.map((h,i)=>`<div class="slide${i==slide?" on":""}">${ph(h.k,h.ic,h[L][4],h.t)}</div>`).join("");
   $("#dots").innerHTML=HERO.map((h,i)=>`<button aria-label="${i+1}" aria-current="${i==slide}" data-s="${i}"></button>`).join("");
-  const h=HERO[slide][L];$("#hk").textContent=h[0];$("#ht").textContent=h[1];$("#hp").textContent=h[2];$("#hb").textContent=h[3];
+  const h=HERO[slide][L];$("#hk").textContent=h[0];$("#ht").textContent=h[1];$("#hp").textContent=h[2];$("#hb").textContent=h[3];$("#hb").setAttribute("href",HERO[slide].a||"#urunler");
 }
-function show(i){slide=(i+HERO.length)%HERO.length;document.querySelectorAll(".slide").forEach((s,j)=>s.classList.toggle("on",j==slide));document.querySelectorAll("#dots button").forEach((d,j)=>d.setAttribute("aria-current",j==slide));const h=HERO[slide][L];$("#hk").textContent=h[0];$("#ht").textContent=h[1];$("#hp").textContent=h[2];$("#hb").textContent=h[3]}
+function show(i){slide=(i+HERO.length)%HERO.length;document.querySelectorAll(".slide").forEach((s,j)=>s.classList.toggle("on",j==slide));document.querySelectorAll("#dots button").forEach((d,j)=>d.setAttribute("aria-current",j==slide));const h=HERO[slide][L];$("#hk").textContent=h[0];$("#ht").textContent=h[1];$("#hp").textContent=h[2];$("#hb").textContent=h[3];$("#hb").setAttribute("href",HERO[slide].a||"#urunler")}
 function shop(){
   $("#cats").innerHTML=CAT.map(c=>`<button class="cat" data-c="${c[0]}" aria-pressed="${c[0]==cat}">${ph("cat-"+c[0],c[3],"",c[4])}<b>${en()?c[2]:c[1]}</b><small>${c[0]=="all"?P.length:P.filter(p=>p.c==c[0]).length} ${en()?"items":"ürün"}</small></button>`).join("");
   let list=P.filter(p=>cat=="all"||p.c==cat);if(sort=="a")list=[...list].sort((a,b)=>a.p-b.p);if(sort=="z")list=[...list].sort((a,b)=>b.p-a.p);
@@ -283,10 +404,10 @@ function rest(){
 }
 function lang(l){L=l;document.documentElement.lang=l;document.querySelectorAll("[data-i]").forEach(e=>{const v=T[l][e.dataset.i];if(v)e.textContent=v});
   $("#lTR").setAttribute("aria-pressed",l=="tr");$("#lEN").setAttribute("aria-pressed",l=="en");$("#em").placeholder=en()?"Your email address":"E-posta adresiniz";
-  document.querySelectorAll(".ph .up").forEach(u=>u.firstChild.textContent=en()?"Add photo":"Fotoğraf ekle");hero();shop();rest();cartUI();save()}
+  document.querySelectorAll(".ph .up").forEach(u=>u.firstChild.textContent=en()?"Add photo":"Fotoğraf ekle");hero();shop();rest();trees();cartUI();save()}
 function cartUI(){
-  const ids=Object.keys(cart).filter(k=>cart[k]>0&&P.some(p=>p.id==k));let tot=0,n=0;
-  $("#lines").innerHTML=ids.length?ids.map(k=>{const p=P.find(x=>x.id==k);tot+=p.p*cart[k];n+=cart[k];return `<div class="li">${ph("p-"+p.id,p.ic,"")}<div>${p[L][0]}<small>${fmt(p.p)} · ${unit(p.u)}</small></div><div class="qty"><button data-cm="${k}" aria-label="−">−</button><span>${cart[k]}</span><button data-cp="${k}" aria-label="+">+</button></div></div>`}).join("")
+  const ids=Object.keys(cart).filter(k=>cart[k]>0&&ITEM(k));let tot=0,n=0;
+  $("#lines").innerHTML=ids.length?ids.map(k=>{const p=ITEM(k);tot+=p.p*cart[k];n+=cart[k];return `<div class="li">${ph(p.k,p.ic,"")}<div>${p.n}<small>${p.sub}</small></div><div class="qty"><button data-cm="${k}" aria-label="−">−</button><span>${cart[k]}</span><button data-cp="${k}" aria-label="+">+</button></div></div>`}).join("")
    :`<p style="padding:48px 0;text-align:center;color:var(--mute)">${en()?"Your cart is empty.":"Sepetiniz boş."}</p>`;
   $("#cnt").textContent=n;$("#tot").textContent=fmt(tot);const left=1000-tot;
   $("#ship").textContent=left>0?(en()?`Add ${fmt(left)} more for free delivery`:`Ücretsiz kargo için ${fmt(left)} daha ekleyin`):(en()?"You qualify for free delivery":"Kargonuz ücretsiz");
@@ -294,14 +415,19 @@ function cartUI(){
 let tt;const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("on"),2400)};
 const drawer=o=>{$("#drawer").classList.toggle("on",o);$("#shade").classList.toggle("on",o)};
 document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;
-  if(d.c){cat=d.c;shop()}
+  if(d.tsp){ti=+d.tsp;trees()}
+  else if(d.ty){ty=+d.ty;trees()}
+  else if(d.adopt){const k=tkey(),it=ITEM(k);cart[k]=(cart[k]||0)+1;cartUI();toast((en()?"Added to cart: ":"Sepete eklendi: ")+it.n)}
+  else if(d.c){cat=d.c;shop()}
   else if(d.f){cat=d.f;shop();$("#urunler").scrollIntoView()}
   else if(d.s){show(+d.s);restart()}
   else if(d.add){const p=P.find(x=>x.id==d.add);cart[d.add]=(cart[d.add]||0)+1;cartUI();toast((en()?"Added to cart: ":"Sepete eklendi: ")+p[L][0])}
   else if(d.cp){cart[d.cp]++;cartUI()}
   else if(d.cm){cart[d.cm]--;if(cart[d.cm]<=0)delete cart[d.cm];cartUI()}
 });
+document.addEventListener("input",e=>{if(e.target.id=="tname"){tnm=e.target.value;tag()}});
 document.addEventListener("change",e=>{const i=e.target;if(i.id=="sort"){sort=i.value;shop();return}
+  if(i.id=="tgift"){tgift=i.checked;return}
   if(i.type!="file"||!i.files[0])return;const k=i.closest(".ph").dataset.k,r=new FileReader();
   r.onload=()=>{imgs[k]=r.result;document.querySelectorAll(`.ph[data-k="${k}"]`).forEach(f=>{f.style.backgroundImage=`url(${r.result})`;f.classList.add("has")})};r.readAsDataURL(i.files[0])});
 $("#lTR").onclick=()=>lang("tr");$("#lEN").onclick=()=>lang("en");
